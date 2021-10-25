@@ -1,8 +1,30 @@
 import 'package:bmi_calculator/screens/widgets/back_container.dart';
+import 'package:bmi_calculator/screens/widgets/gender_card.dart';
+import 'package:bmi_calculator/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool maleActive = false;
+  bool femaleActive = true;
+
+  void updateColor(String gender) {
+    setState(() {
+      if (gender == 'Male') {
+        maleActive = !maleActive;
+        femaleActive = false;
+      } else if (gender == 'Female') {
+        maleActive = false;
+        femaleActive = !femaleActive;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +37,34 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  Expanded(child: BackContainer()),
-                  Expanded(child: BackContainer()),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => updateColor('Male'),
+                      child: BackContainer(
+                        backColor: maleActive
+                            ? kBackContainerActiveColor
+                            : kBackContainerColor,
+                        child: GenderCard(
+                          iconName: Icons.male,
+                          label: 'Male',
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => updateColor('Female'),
+                      child: BackContainer(
+                        backColor: femaleActive
+                            ? kBackContainerActiveColor
+                            : kBackContainerColor,
+                        child: GenderCard(
+                          iconName: Icons.female,
+                          label: 'Female',
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
