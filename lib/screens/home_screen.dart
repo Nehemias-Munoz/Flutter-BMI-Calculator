@@ -27,51 +27,58 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: [
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedGender = Gender.male;
-                        });
-                      },
-                      child: BackContainer(
-                        backColor: selectedGender == Gender.male
-                            ? kBackContainerActiveColor
-                            : kBackContainerColor,
-                        child: GenderCard(
-                          iconName: Icons.male,
-                          label: 'Male',
-                        ),
+                    child: BackContainer(
+                      onTap: () => setState(() {
+                        selectedGender = Gender.male;
+                      }),
+                      backColor: selectedGender == Gender.male
+                          ? kBackContainerActiveColor
+                          : kBackContainerColor,
+                      child: GenderCard(
+                        iconName: Icons.male,
+                        label: 'Male',
                       ),
                     ),
                   ),
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedGender = Gender.female;
-                        });
-                      },
-                      child: BackContainer(
-                        backColor: selectedGender == Gender.female
-                            ? kBackContainerActiveColor
-                            : kBackContainerColor,
-                        child: GenderCard(
-                          iconName: Icons.female,
-                          label: 'Female',
-                        ),
+                    child: BackContainer(
+                      onTap: () => setState(() {
+                        selectedGender = Gender.female;
+                      }),
+                      backColor: selectedGender == Gender.female
+                          ? kBackContainerActiveColor
+                          : kBackContainerColor,
+                      child: GenderCard(
+                        iconName: Icons.female,
+                        label: 'Female',
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            Expanded(child: BackContainer()),
+            Expanded(
+              child: BackContainer(
+                backColor: kBackContainerColor,
+                onTap: () {},
+              ),
+            ),
             Expanded(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Expanded(child: BackContainer()),
-                  Expanded(child: BackContainer()),
+                  Expanded(
+                    child: BackContainer(
+                      backColor: kBackContainerColor,
+                      onTap: () {},
+                    ),
+                  ),
+                  Expanded(
+                    child: BackContainer(
+                      backColor: kBackContainerColor,
+                      onTap: () {},
+                    ),
+                  ),
                 ],
               ),
             ),
