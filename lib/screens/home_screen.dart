@@ -15,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Gender selectedGender = Gender.female;
   int height = 180;
+  int weight = 70;
+  int age = 30;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,12 +74,122 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: BackContainer(
                       backColor: kBackContainerColor,
                       onTap: () {},
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'WEIGHT',
+                            style: kLabelTextStyle,
+                          ),
+                          Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Text(
+                                  weight.toString(),
+                                  style: kNumberTextStyle,
+                                ),
+                                SizedBox(
+                                  width: 4.0,
+                                ),
+                                Text('kg')
+                              ],
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                enableFeedback: true,
+                                onPressed: () {
+                                  setState(() {
+                                    if (weight == 10) {
+                                      weight = weight;
+                                    } else if (weight > 10) {
+                                      weight--;
+                                    }
+                                  });
+                                },
+                                icon: Icon(Icons.remove),
+                              ),
+                              IconButton(
+                                enableFeedback: true,
+                                onPressed: () {
+                                  setState(() {
+                                    if (weight == 300) {
+                                      weight = weight;
+                                    } else if (weight < 299) {
+                                      weight++;
+                                    }
+                                  });
+                                },
+                                icon: Icon(Icons.add),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Expanded(
                     child: BackContainer(
                       backColor: kBackContainerColor,
                       onTap: () {},
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'AGE',
+                            style: kLabelTextStyle,
+                          ),
+                          Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Text(
+                                  age.toString(),
+                                  style: kNumberTextStyle,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                enableFeedback: true,
+                                onPressed: () {
+                                  setState(() {
+                                    if (age == 10) {
+                                      age = age;
+                                    } else if (age > 10) {
+                                      age--;
+                                    }
+                                  });
+                                },
+                                icon: Icon(Icons.remove),
+                              ),
+                              IconButton(
+                                enableFeedback: true,
+                                onPressed: () {
+                                  setState(() {
+                                    if (age == 130) {
+                                      age = age;
+                                    } else if (age < 129) {
+                                      age++;
+                                    }
+                                  });
+                                },
+                                icon: Icon(Icons.add),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -115,6 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Row(
           children: [
             IconButton(
+              enableFeedback: true,
               onPressed: () {
                 setState(() {
                   if (height == 100.0) {
@@ -141,6 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             IconButton(
+              enableFeedback: true,
               onPressed: () {
                 setState(() {
                   if (height == 250.0) {
