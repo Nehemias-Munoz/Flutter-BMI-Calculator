@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/screens/widgets/back_container.dart';
+import 'package:bmi_calculator/screens/widgets/bottom_button.dart';
 import 'package:bmi_calculator/screens/widgets/gender_card.dart';
 import 'package:bmi_calculator/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -195,6 +196,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            BottomButton(
+              text: 'Calculate',
+              onPress: () {
+                Navigator.pushNamed(context, 'result');
+              },
+            )
           ],
         ),
       ),

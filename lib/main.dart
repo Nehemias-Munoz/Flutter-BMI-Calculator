@@ -10,10 +10,16 @@ class MyApp extends StatelessWidget {
       title: 'BMI Calculator',
       home: HomeScreen(),
       debugShowCheckedModeBanner: false,
+      initialRoute: 'home',
+      routes: {
+        'home': (_) => HomeScreen(),
+        'result': (_) => ResultScreen(),
+      },
       theme: ThemeData.dark().copyWith(
-          appBarTheme: AppBarTheme(
-        centerTitle: true,
-      )),
+        appBarTheme: AppBarTheme(
+          centerTitle: true,
+        ),
+      ),
     );
   }
 }
