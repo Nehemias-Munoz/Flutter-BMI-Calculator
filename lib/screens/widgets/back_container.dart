@@ -1,4 +1,3 @@
-import 'package:bmi_calculator/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class BackContainer extends StatelessWidget {
