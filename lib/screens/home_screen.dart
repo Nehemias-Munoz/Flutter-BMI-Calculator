@@ -1,3 +1,5 @@
+import 'package:bmi_calculator/models/calculator_brain.dart';
+import 'package:bmi_calculator/screens/result_screen.dart';
 import 'package:bmi_calculator/screens/widgets/back_container.dart';
 import 'package:bmi_calculator/screens/widgets/bottom_button.dart';
 import 'package:bmi_calculator/screens/widgets/gender_card.dart';
@@ -199,7 +201,20 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomButton(
               text: 'Calculate',
               onPress: () {
-                Navigator.pushNamed(context, 'result');
+                CalculatorBrain calc =
+                    CalculatorBrain(age: age, weight: weight, height: height);
+                String result = calc.getResult();
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ResultScreen(
+                      resultBmi: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      interpretation: calc.getInterpretation(),
+                    ),
+                  ),
+                );
               },
             )
           ],

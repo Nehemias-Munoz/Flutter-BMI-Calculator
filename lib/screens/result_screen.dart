@@ -4,7 +4,16 @@ import 'package:bmi_calculator/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({Key? key}) : super(key: key);
+  final String resultBmi;
+  final String resultText;
+  final String interpretation;
+
+  const ResultScreen(
+      {Key? key,
+      required this.resultBmi,
+      required this.resultText,
+      required this.interpretation})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +33,20 @@ class ResultScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
-                        'Normal',
-                        style: TextStyle(fontSize: 30.0),
+                        resultText,
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            color: resultText != 'Normal'
+                                ? Colors.red
+                                : Colors.green),
                       ),
                       Text(
-                        '100',
+                        resultBmi,
                         style: TextStyle(
                             fontSize: 70.0, fontWeight: FontWeight.w900),
                       ),
                       Text(
-                        'Quis Lorem voluptate laboris consectetur sit ut enim non sint. Voluptate officia eiusmod voluptate ad non id ullamco non sint ex velit. Enim occaecat labore magna anim.',
+                        interpretation,
                         style: kLabelTextStyle,
                       )
                     ],
